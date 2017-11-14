@@ -9,16 +9,24 @@
 #define SEMESTER_H_
 #include <iostream>
 using namespace std;
+#include <vector>
 #include "Catalog.h";
 
 class Semester {
 public:
-	Semester();
-	Semester(int);
-	virtual ~Semester();
+	Semester(string);
+	Semester(string, int);
+	~Semester();
+	void addCourse(string, string, int, bool);
+	int getUnits();
+	bool delCourse(string);
+	int search(string);
 private:
 	string sem;
-	CatalogCourse** courses;
+	int units;
+	int numCourses;
+	int MAX_UNITS;
+	vector<CatalogCourse*> courses;
 };
 
 #endif /* SEMESTER_H_ */
