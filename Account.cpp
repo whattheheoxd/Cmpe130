@@ -1,16 +1,10 @@
 #include "Account.h"
-//#include "Semester.h"
-//#include "CatalogCourse.h"
-#include <string>
-#include <vector>
-#include <fstream>
+#include "Catalog.h"
 #include <iostream>
 
-using namespace std;
-
-Account::Account(){
+Account::Account() {
 	acc.open("file.txt", std::fstream::in | std::fstream::out);
-	if (acc.is_open()){
+	if (acc.is_open()) {
 		cout << "Opening file 'file.txt'" << endl;
 		//check if file template is already created
 		string holder;
@@ -25,13 +19,17 @@ Account::Account(){
 			acc << "Incomplete course(s): \n";
 		}
 	}
-	else{
+	else {
 		cout << "Error opening the file\nSystem exiting..." << endl;
 		exit(0);
 	}
 }
 
-void Account::setName(string fName, string lName){
+Account::~Account() {
+	delete this;
+}
+
+void Account::setName(string fName, string lName) {
 	firstName = fName;
 	lastName = lName;
 
@@ -42,7 +40,7 @@ void Account::setName(string fName, string lName){
 	string tmpL = lName;
 	tmpF.erase(tmpF.length());
 	tmpL.erase(tmpL.length());
-	char *buff1 = new char [tmpF.length()];
+	char *buff1 = new char[tmpF.length()];
 	strcpy(buff1, tmpF.c_str());
 	char *buff2 = new char[tmpL.length()];
 	strcpy(buff2, tmpL.c_str());
@@ -54,14 +52,14 @@ void Account::setName(string fName, string lName){
 		acc.seekp(pos - 2);		//assumes you can go back to previous line
 		acc.write(buff1, tmpF.length());
 		getline(acc, holder);	//goes to next line
-		//update Last Name line with last name
+								//update Last Name line with last name
 		pos = acc.tellp();
 		acc.seekp(pos - 2);
 		acc.write(buff2, tmpL.length());
 	}
 }
 
-void Account::setStudID(int ID){
+void Account::setStudID(int ID) {
 	studId = ID;
 
 	//reset file pointer to the beginning
@@ -81,8 +79,8 @@ void Account::setStudID(int ID){
 		}
 	}
 }
-	
-void Account::setMajor(string maj){
+
+void Account::setMajor(string maj) {
 	major = maj;
 
 	//reset file pointer to the beginning
@@ -105,8 +103,8 @@ void Account::setMajor(string maj){
 		}
 	}
 }
-	
-void Account::setMinor(string min = NULL){
+
+void Account::setMinor(string min = NULL) {
 	minor = min;
 
 	//reset file pointer to the beginning
@@ -130,14 +128,14 @@ void Account::setMinor(string min = NULL){
 	}
 }
 
-/*
+
 //assumes CatalogCourse title's variable is called name
-void Account::addCompleteCourses(CatalogCourse obj){
-	completedCourses.insert(0, obj);
+void Account::addCompleteCourses(CatalogCourse obj) {
+	completedCourses.insert(completedCourses.begin(), obj);
 	//remove from list of incomplete courses
-	for (int i = 0; i < incompleteCourses.size(); i++){
-		if (incompleteCourses[i] == obj){
-			incompleteCourses.erase(i);
+	for (int i = 0; i < incompleteCourses.size(); i++) {
+		if (incompleteCourses[i].course == obj.course) {
+			incompleteCourses.erase(incompleteCourses.begin() + i);
 			break;
 		}
 	}
@@ -145,45 +143,45 @@ void Account::addCompleteCourses(CatalogCourse obj){
 	//update file
 	acc.seekg(0, acc.beg);
 	string holder;
-	char *buff = new char[obj.name.length()];
-	strcpy(buff, obj.name.c_str());
+	char *buff = new char[obj.course.length()];
+	strcpy(buff, obj.course.c_str());
 	getline(acc, holder);
 	while (!acc.eof()) {
 		if (holder.find("Completed")) {
 			short pos = acc.tellp();
 			acc.seekp(pos - 2);
-			acc.write(buff, obj.name.length());
+			acc.write(buff, obj.course.length());
 			break;
 		}
-		else{
+		else {
 			getline(acc, holder);
 		}
 	}
 }
 
-void Account::addIncompleteCourses(CatalogCourse obj){
+void Account::addIncompleteCourses(CatalogCourse obj) {
 	incompleteCourses.push_back(obj);
 
 	//update file
-	char *buff = new char[obj.name.length()];
-	strcpy(buff, obj.name.c_str());
+	char *buff = new char[obj.course.length()];
+	strcpy(buff, obj.course.c_str());
 	acc.seekg(-1, acc.end);
-	acc.write(buff, obj.name.length());
+	acc.write(buff, obj.course.length());
 }
-*/
 
-void Account::displayStudInfo(Account obj){
+
+void Account::displayStudInfo(Account obj) {
 	cout << "Displaying student's information..." << endl;
 	cout << "First Name: " << firstName << endl;
 	cout << "Last Name: " << lastName << endl;
 	cout << "Major: " << major << endl;
 	cout << "Minor: " << minor << endl;
 	cout << "Completed Course(s): " << endl;
-	/*for (int i = 0; i < completedCourses.size(); i++) {
-		cout << completedCourses[i] << endl;
+	for (int i = 0; i < completedCourses.size(); i++) {
+		cout << completedCourses[i].course << endl;
 	}
 	cout << "Incomplete Course(s)" << endl;
 	for (int i = 0; i < incompleteCourses.size(); i++) {
-		cout << incompleteCourses[i] << endl;
-	}*/
+		cout << incompleteCourses[i].course << endl;
+	}
 }
