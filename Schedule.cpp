@@ -1,9 +1,3 @@
-/*
- * Schedule.cpp
- *
- *  Created on: Nov 2, 2017
- *      Author: Andrea
- */
 
 #include "Schedule.h"
 
@@ -76,12 +70,15 @@ vector<ScheduleCourse*> Schedule::getCourses(string cn){
 	for(int i=0; i < numCourses; i++)
 		if(courses[i]->courseNum.compare(cn)==0)
 			c.push_back(courses[i]);
+
+	return c;
 }
 
 //linear search
 vector<int> Schedule::search(string cn){
 	vector<int> c;
-		for(int i=0; i < numCourses; i++)
-			if(courses[i]->courseNum.compare(cn)==0)
-				c.push_back(courses[i]->courseID);
+	for(int i=0; i < numCourses; i++)
+		if(courses[i]->courseNum.compare(cn)==0)
+			c.push_back(courses[i]->courseID);
+	return c;
 }

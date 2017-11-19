@@ -1,10 +1,3 @@
-/*
- * Catalog.cpp
- *
- *  Created on: Nov 2, 2017
- *      Author: Andrea
- */
-
 #include "Catalog.h"
 //use adjacency list
 
@@ -33,7 +26,6 @@ Catalog::Catalog(int size) {
 		prereqs[i].head = NULL;
 		coreqs[i].head = NULL;
 	}
-
 }
 
 Catalog::~Catalog() {
@@ -41,6 +33,8 @@ Catalog::~Catalog() {
 
 }
 
+//sort by courseNum
+//ex. c.addCourse("MATH 30", "Calculus I", 3, false);
 void Catalog::addCourse(string cn, string c, int u, bool te){
 	if(numCourses < MAX_SIZE){
 		CatalogCourse* course = new CatalogCourse;
@@ -52,16 +46,46 @@ void Catalog::addCourse(string cn, string c, int u, bool te){
 		course->nextcr = NULL;
 		courses[numCourses] = course;
 		numCourses += 1;
+
+		bool done = false;
+		int i = numCourses-1;
+		while(i>0 && !done){
+			if(courses[i]->courseNum.compare(courses[i-1]->courseNum) > 0){
+				CatalogCourse* temp = courses[i];
+				courses[i] = courses[i-1];
+				courses[i-1] = courses[i];
+			}else
+				done = true;
+			i--;
+		}
+
 		cout << cn << " has been added.";
 	}else
 		cout << "Catalog full.";
 }
 
+//catalog sorted by courseNum - binary search
 int Catalog::search(string cn){
-	for(int i=0; i<numCourses; i++)
-		if(courses[i]->courseNum.compare(cn)==0)
-			return i;
-	return -1;
+    /*
+    for(int i = 0; i < numCourses; i++){
+        if(courses[i]->courseNum.compare(cn) == 0)
+            return i;
+    }
+    return -1;
+    */
+	int i = 0, lo = 0, hi = numCourses-1, m;
+
+	while(lo <= hi){
+		m = (lo+hi)/2;
+		if(courses[m]->courseNum.compare(cn) > 0)
+			hi = m - 1;
+		else if(courses[m]->courseNum.compare(cn) < 0)
+			lo = m + 1;
+		else return m;
+	}
+	//if(lo > hi)
+        return -1;
+
 }
 
 void Catalog::addPrereq(string c, string pr){ //adding edge
@@ -92,5 +116,14 @@ void Catalog::addCoreq(string c, string cr){ //adding edge
 		prereqs[ci].head = courses[cri];
 		cout << c << "'s corequisite " << cr << " has been added.";
 	}
+}
 
+//binary search
+CatalogCourse* Catalog::getCourse(string cn){
+	int m = search(cn);
+	return (m!=-1) ? courses[m] : NULL;
+}
+
+CatalogCourse* Catalog::getCourse(int cn){
+	return courses[cn];
 }

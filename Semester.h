@@ -1,9 +1,3 @@
-/*
- * Semester.h
- *
- *  Created on: Nov 2, 2017
- *      Author: Andrea
- */
 
 #ifndef SEMESTER_H_
 #define SEMESTER_H_

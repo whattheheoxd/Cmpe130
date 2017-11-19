@@ -13,7 +13,8 @@ Semester::Semester(string s, int u){
 	MAX_UNITS = u;
 }
 
-Semester::~Semester();
+Semester::~Semester(){
+}
 
 void Semester::addCourse(string cn, string c, int u, bool te){
 	if(units+u < MAX_UNITS){

@@ -1,5 +1,3 @@
-
-
 #ifndef CATALOG_H_
 #define CATALOG_H_
 #include <iostream>
@@ -29,7 +27,8 @@ public:
 	int search(string);
 	void addPrereq(string, string);
 	void addCoreq(string, string);
-
+	CatalogCourse* getCourse(string);
+	CatalogCourse* getCourse(int);
 private:
 	int MAX_SIZE;
 	int numCourses;

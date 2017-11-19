@@ -1,9 +1,3 @@
-/*
- * Schedule.h
- *
- *  Created on: Nov 2, 2017
- *      Author: Andrea
- */
 
 #ifndef SCHEDULE_H_
 #define SCHEDULE_H_
