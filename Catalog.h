@@ -8,6 +8,7 @@ struct CatalogCourse {
 	string course;
 	int units;
 	bool TE; //technical elective
+	bool Division;	//upper division = 1, lower = 0
 	CatalogCourse* nextpr;
 	CatalogCourse* nextcr;
 };
