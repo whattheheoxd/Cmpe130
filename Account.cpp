@@ -1,8 +1,47 @@
 #include "Account.h"
 #include "Catalog.h"
 #include <iostream>
+#include <fstream>
 
-Account::Account() {
+Account::Account(string firstName, string lastName, int ID, string maj, string min) {
+	setName(firstName, lastName);
+	setStudID(ID);
+	majorFile.open(maj, std::fstream::in);
+	minorFile.open(min, std::fstream::in);
+	setMajor(maj);
+	setMinor(min);
+	addIncompleteCourses(majorFile);
+	addIncompleteCourses(minorFile);
+
+	acc.open("file.txt", std::fstream::in | std::fstream::out);
+	if (acc.is_open()) {
+		cout << "Opening file 'file.txt'" << endl;
+		//check if file template is already created
+		string holder;
+		getline(acc, holder);
+		if (!holder.find("First Name:")) {
+			acc << "First Name: \n";
+			acc << "Last Name: \n";
+			acc << "Student ID: \n";
+			acc << "Major: \n";
+			acc << "Minor: \n";
+			acc << "Completed course(s): \n";
+			acc << "Incomplete course(s): \n";
+		}
+	}
+	else {
+		cout << "Error opening the file\nSystem exiting..." << endl;
+		exit(0);
+	}
+}
+
+Account::Account(string firstName, string lastName, int ID, string maj) {
+	setName(firstName, lastName);
+	setStudID(ID);
+	majorFile.open(maj, std::fstream::in);
+	setMajor(maj);
+	addIncompleteCourses(majorFile);
+
 	acc.open("file.txt", std::fstream::in | std::fstream::out);
 	if (acc.is_open()) {
 		cout << "Opening file 'file.txt'" << endl;
@@ -52,10 +91,13 @@ void Account::setName(string fName, string lName) {
 		acc.seekp(pos - 2);		//assumes you can go back to previous line
 		acc.write(buff1, tmpF.length());
 		getline(acc, holder);	//goes to next line
-								//update Last Name line with last name
+		//update Last Name line with last name
 		pos = acc.tellp();
 		acc.seekp(pos - 2);
 		acc.write(buff2, tmpL.length());
+	}
+	else {
+		cout << "Unable to write first name and last name." << endl;
 	}
 }
 
@@ -73,6 +115,7 @@ void Account::setStudID(int ID) {
 			short pos = acc.tellp();
 			acc.seekp(pos - 2);
 			acc.write(id, 9);
+			break;
 		}
 		else {
 			getline(acc, holder);
@@ -80,12 +123,12 @@ void Account::setStudID(int ID) {
 	}
 }
 
-void Account::setMajor(string maj) {
-	major = maj;
+void Account::setMajor(string majorName) {
+	major = majorName;
 
 	//reset file pointer to the beginning
 	acc.seekg(0, acc.beg);
-	string tmpM = maj;
+	string tmpM = majorName;
 	tmpM.erase(tmpM.length());
 	char *buff = new char[tmpM.length()];
 	strcpy(buff, tmpM.c_str());
@@ -104,12 +147,12 @@ void Account::setMajor(string maj) {
 	}
 }
 
-void Account::setMinor(string min = NULL) {
-	minor = min;
+void Account::setMinor(string minorName) {
+	minor = minorName;
 
 	//reset file pointer to the beginning
 	acc.seekg(0, acc.beg);
-	string tmpM = min;
+	string tmpM = minorName;
 	tmpM.erase(tmpM.length());
 	char *buff = new char[tmpM.length()];
 	strcpy(buff, tmpM.c_str());
@@ -127,7 +170,6 @@ void Account::setMinor(string min = NULL) {
 		}
 	}
 }
-
 
 //assumes CatalogCourse title's variable is called name
 void Account::addCompleteCourses(CatalogCourse obj) {
@@ -159,16 +201,48 @@ void Account::addCompleteCourses(CatalogCourse obj) {
 	}
 }
 
-void Account::addIncompleteCourses(CatalogCourse obj) {
-	incompleteCourses.push_back(obj);
-
-	//update file
-	char *buff = new char[obj.course.length()];
-	strcpy(buff, obj.course.c_str());
-	acc.seekg(-1, acc.end);
-	acc.write(buff, obj.course.length());
+void Account::addIncompleteCourses(fstream &file) {
+	string holder;
+	getline(file, holder);		//skip first header line
+	while (file.eof()) {
+		getline(file, holder);
+		CatalogCourse obj;
+		char buffer[50];
+		//get courseNum
+		size_t tmp = holder.find(',');
+		holder.copy(buffer, tmp + 1, 0);
+		obj.courseNum = buffer;
+		memset(buffer, '\0', 50);
+		//get course
+		int prevIn = tmp + 2;
+		tmp = holder.find(',', tmp + 2);
+		holder.copy(buffer, tmp + 1 - prevIn, prevIn);
+		obj.course = buffer;
+		memset(buffer, '\0', 50);
+		//get units
+		prevIn = tmp + 2;
+		tmp = holder.find(',', tmp + 2);
+		holder.copy(buffer, tmp + 1 - prevIn, prevIn);
+		obj.units = stoi(buffer);
+		memset(buffer, '\0', 50);
+		//get technical elective or division
+		prevIn = tmp + 2;
+		tmp = holder.find(',', tmp + 2);
+		if (tmp != std::string::npos) {		//check if neither TE or Division
+			holder.copy(buffer, tmp + 1 - prevIn, prevIn);
+			if (buffer == "TE") {
+				obj.TE = true;
+			}
+			else if (buffer == "UD" || buffer == "LD") {
+				if (buffer == "UD")
+					obj.Division = true;
+				else
+					obj.Division = false;
+			}
+		}
+		incompleteCourses.push_back(obj);
+	}
 }
-
 
 void Account::displayStudInfo(Account obj) {
 	cout << "Displaying student's information..." << endl;
@@ -177,11 +251,9 @@ void Account::displayStudInfo(Account obj) {
 	cout << "Major: " << major << endl;
 	cout << "Minor: " << minor << endl;
 	cout << "Completed Course(s): " << endl;
-	for (int i = 0; i < completedCourses.size(); i++) {
-		cout << completedCourses[i].course << endl;
-	}
+	for (int i = 0; i < completedCourses.size(); i++) 
+		cout << completedCourses[i].courseNum << " " << completedCourses[i].course << endl;
 	cout << "Incomplete Course(s)" << endl;
-	for (int i = 0; i < incompleteCourses.size(); i++) {
-		cout << incompleteCourses[i].course << endl;
-	}
+	for (int i = 0; i < incompleteCourses.size(); i++)
+		cout << incompleteCourses[i].courseNum << " " << incompleteCourses[i].course << endl;
 }
