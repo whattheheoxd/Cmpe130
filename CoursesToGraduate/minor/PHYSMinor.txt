@@ -1,0 +1,16 @@
+CourseNum, course, units, division
+PHYS 050, General Physics/Mechanics, 4, LD
+PHYS 051, General Physics/Electricity and Magnetism, 4, LD
+PHYS 052, General Physics/Waves, Light, Heat, 4, LD
+ASTR 117A, Astrophysics I, 3, UD
+ASTR 117B, Astrophyics II, 3, UD
+ASTR 155, Topics in Modern Astronomy and Astrophyics, 3, UD
+PHYS 105A, Advanced Mechanics, 3, UD
+PHYS 105B, Advanced Mechanics, 3, UD
+PHYS 110A, Electricity and Magnetism, 3, UD
+PHYS 110B, Electricity and Magnetism, 3, UD
+PHYS 120A, Laboratory Electronics for Scientists, 3, UD
+PHYS 122, Modern Physics, 3, UD
+PHYS 158, Modern Optics, 3, UD
+PHYS 160, Thermodynamics & Statistical Physics, 3, UD
+PHYS 163, Quantum Mechanics, 3, UD
