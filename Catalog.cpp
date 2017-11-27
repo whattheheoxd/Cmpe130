@@ -42,6 +42,7 @@ void Catalog::addCourse(string cn, string c, int u, bool te){
 		course->course = c;
 		course->units = u;
 		course->TE = te;
+		course->Division = div;
 		course->nextpr = NULL;
 		course->nextcr = NULL;
 		courses[numCourses] = course;
