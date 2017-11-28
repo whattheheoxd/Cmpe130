@@ -3,6 +3,8 @@
 #define SCHEDULE_H_
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 struct ScheduleCourse{
@@ -10,6 +12,7 @@ struct ScheduleCourse{
 	string course;
 	int units;
 	int courseID;
+	int section;
 	//data struture to hold days & times?
 	//string days[]
 	//int times[]
@@ -20,13 +23,14 @@ struct ScheduleCourse{
 
 class Schedule {
 public:
-	Schedule(string);
-	Schedule(string, int);
-	virtual ~Schedule();
-	void addCourse(string, string, int, int);
+	Schedule(string, string);
+	Schedule(string, string, int);
+	~Schedule();
+	void create(string); //get txt file
+	void addCourse(string, string, int, int, int);
 	ScheduleCourse* getCourse(int);
 	vector<ScheduleCourse*> getCourses(string);
-	vector<int> search(string); //return array of course ids
+	vector<int> look(string); //return array of course ids
 private:
 	string semester;
 	ScheduleCourse** courses;

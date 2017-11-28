@@ -1,6 +1,8 @@
 #ifndef CATALOG_H_
 #define CATALOG_H_
 #include <iostream>
+#include <fstream>
+#include <sstream>
 using namespace std;
 //#include "CatalogCourse.cpp";
 struct CatalogCourse {
@@ -8,7 +10,6 @@ struct CatalogCourse {
 	string course;
 	int units;
 	bool TE; //technical elective
-	bool Division;	//upper division = 1, lower = 0
 	CatalogCourse* nextpr;
 	CatalogCourse* nextcr;
 };
@@ -21,15 +22,18 @@ struct Reqs{
 //use adjacency list
 class Catalog {
 public:
-	Catalog();
-	Catalog(int);
+	Catalog(string, string, string);
+	Catalog(string, string, string, int);
 	virtual ~Catalog();
+	void create(string, string, string);
 	void addCourse(string, string, int, bool);
-	int search(string);
+	int look(string);
 	void addPrereq(string, string);
 	void addCoreq(string, string);
 	CatalogCourse* getCourse(string);
 	CatalogCourse* getCourse(int);
+	CatalogCourse* getPrereq(string);
+	CatalogCourse* getCoreq(string);
 private:
 	int MAX_SIZE;
 	int numCourses;

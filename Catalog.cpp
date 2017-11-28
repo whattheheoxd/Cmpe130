@@ -1,7 +1,7 @@
 #include "Catalog.h"
 //use adjacency list
 
-Catalog::Catalog() {
+Catalog::Catalog(string c, string pr, string cr) {
 	// TODO Auto-generated constructor stub
 	MAX_SIZE = 100;
 	numCourses = 0;
@@ -12,10 +12,10 @@ Catalog::Catalog() {
 		prereqs[i].head = NULL;
 		coreqs[i].head = NULL;
 	}
-
+    create(c, pr, cr);
 }
 
-Catalog::Catalog(int size) {
+Catalog::Catalog(string c, string pr, string cr, int size) {
 	// TODO Auto-generated constructor stub
 	MAX_SIZE = size;
 	numCourses = 0;
@@ -26,11 +26,61 @@ Catalog::Catalog(int size) {
 		prereqs[i].head = NULL;
 		coreqs[i].head = NULL;
 	}
+	create(c, pr, cr);
 }
 
 Catalog::~Catalog() {
 	// TODO Auto-generated destructor stub
 
+}
+
+void Catalog::create(string c, string pr, string cr){
+    ifstream file;
+    file.open(c.c_str());
+    string s, t, courseNum, course, x;
+    int section, courseID, units;
+    bool te;
+    if(file.is_open()){
+        //begin CatalogCourse obj initialization
+        //CourseNum, course, units, TE
+        while(getline(file, s)){
+            stringstream stream(s);
+            getline(stream, courseNum, ',');
+            getline(stream, course, ',');
+            getline(stream, x, ',');
+            stringstream u(x);
+            u >> units;
+            te = getline(stream, t, ',');
+
+            addCourse(courseNum, course, units, te);
+            cout << endl;
+        }
+        file.close();
+    }
+
+    file.open(pr.c_str());
+    if(file.is_open()){
+        while(getline(file, s)){
+            stringstream stream(s);
+            getline(stream, courseNum, ',');
+            getline(stream, course, ',');
+            addPrereq(courseNum, course);
+            cout << endl;
+        }
+        file.close();
+    }
+
+    file.open(cr.c_str());
+    if(file.is_open()){
+        while(getline(file, s)){
+            stringstream stream(s);
+            getline(stream, courseNum, ',');
+            getline(stream, course, ',');
+            addCoreq(courseNum, course);
+            cout << endl;
+        }
+        file.close();
+    }
 }
 
 //sort by courseNum
@@ -42,7 +92,6 @@ void Catalog::addCourse(string cn, string c, int u, bool te){
 		course->course = c;
 		course->units = u;
 		course->TE = te;
-		course->Division = div;
 		course->nextpr = NULL;
 		course->nextcr = NULL;
 		courses[numCourses] = course;
@@ -51,10 +100,10 @@ void Catalog::addCourse(string cn, string c, int u, bool te){
 		bool done = false;
 		int i = numCourses-1;
 		while(i>0 && !done){
-			if(courses[i]->courseNum.compare(courses[i-1]->courseNum) > 0){
+			if(courses[i]->courseNum.compare(courses[i-1]->courseNum) < 0){
 				CatalogCourse* temp = courses[i];
 				courses[i] = courses[i-1];
-				courses[i-1] = courses[i];
+				courses[i-1] = temp;
 			}else
 				done = true;
 			i--;
@@ -66,7 +115,7 @@ void Catalog::addCourse(string cn, string c, int u, bool te){
 }
 
 //catalog sorted by courseNum - binary search
-int Catalog::search(string cn){
+int Catalog::look(string cn){
     /*
     for(int i = 0; i < numCourses; i++){
         if(courses[i]->courseNum.compare(cn) == 0)
@@ -90,8 +139,8 @@ int Catalog::search(string cn){
 }
 
 void Catalog::addPrereq(string c, string pr){ //adding edge
-	int ci = search(c); //find indicated courses
-	int pri = search(pr);
+	int ci = look(c); //find indicated courses
+	int pri = look(pr);
 
 	if(ci==-1 || pri==-1){
 		cout << "Prerequisite relation cannot be added: ";
@@ -105,8 +154,8 @@ void Catalog::addPrereq(string c, string pr){ //adding edge
 }
 
 void Catalog::addCoreq(string c, string cr){ //adding edge
-	int ci = search(c); //find indicated courses
-	int cri = search(cr);
+	int ci = look(c); //find indicated courses
+	int cri = look(cr);
 
 	if(ci==-1 || cri==-1){
 		cout << "Corequisite relation cannot be added: ";
@@ -121,7 +170,7 @@ void Catalog::addCoreq(string c, string cr){ //adding edge
 
 //binary search
 CatalogCourse* Catalog::getCourse(string cn){
-	int m = search(cn);
+	int m = look(cn);
 	return (m!=-1) ? courses[m] : NULL;
 }
 

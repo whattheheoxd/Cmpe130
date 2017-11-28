@@ -37,7 +37,7 @@ int Semester::getUnits(){
 }
 
 bool Semester::delCourse(string cn){
-	int i = search(cn);
+	int i = look(cn);
 	if(i!=-1){
 		courses.erase(courses.begin()+i);
 		return true;
@@ -45,7 +45,7 @@ bool Semester::delCourse(string cn){
 		return false;
 }
 
-int Semester::search(string cn){
+int Semester::look(string cn){
 	for(int i=0; i<numCourses; i++)
 		if(courses.at(i)->courseNum.compare(cn)==0)
 			return i;

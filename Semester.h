@@ -14,7 +14,7 @@ public:
 	void addCourse(string, string, int, bool);
 	int getUnits();
 	bool delCourse(string);
-	int search(string);
+	int look(string);
 private:
 	string sem;
 	int units;

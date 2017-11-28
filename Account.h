@@ -5,32 +5,27 @@
 #include <string>
 #include <fstream>
 #include <vector>
-
+#include <sstream>
 using namespace std;
+#include <iostream>
 
-class Account {
-private:
-	fstream acc;	//text file for schedule
-	fstream majorFile;	//txt file for major
-	fstream minorFile;	//txt file for minor
-	string firstName;
-	string lastName;
-	int studId;
-	string major;
-	string minor;
-	vector<CatalogCourse> completedCourses;
-	vector<CatalogCourse> incompleteCourses;
-public:
-	Account(string firstName, string lastName, int ID, string maj, string min);
-	Account(string firstName, string lastName, int ID, string maj);
-	~Account();
-	void setName(string firstName, string lastName);
-	void setStudID(int ID);
-	void setMajor(string majorName);
-	void setMinor(string minorName);
-	void addCompleteCourses(CatalogCourse obj);
-	void addIncompleteCourses(fstream &file);
-	void displayStudInfo(Account obj);
+class Account
+{
+    public:
+        Account(string); //initialize account info, read from file
+        ~Account();
+        void print();
+        void addCourse(string, string, int, bool); //add to completedCourses
+        bool completed(string); //returns true if course is completed
+
+    private:
+        fstream acc;	//text file for schedule
+        string name;
+        int studId;
+        string major;
+        string minor;
+        vector<CatalogCourse*> completedCourses; //course history
+        //vector<CatalogCourse> incompleteCourses;
 };
 
-#endif
+#endif // ACCOUNT_H
