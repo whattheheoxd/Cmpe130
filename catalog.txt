@@ -1,54 +1,55 @@
-CourseNum, course, units, TE
-CMPE 030, Programming Concepts and Methodology, 3
-CMPE 050, Object-Oriented Concepts and Methodology, 3
-CMPE 102, Assembly Language Programming, 3
-CMPE 110, Electronics for Computing Systems, 3
-CMPE 120, Computer Organization and Architecture
-CMPE 124, Digital Design I, 3
-CMPE 125, Digital Design II, 3
-CMPE 126, Algorithms and Data Structure Design, 3
-CMPE 127, Microprocessor Design I, 3
-CMPE 130, Advanced Algorithm Design, 3
-CMPE 131, Software Engineering I, 3
-CMPE 132, Information Security, 3, TE
-CMPE 133, Software Engineering II, 3
-CMPE 135, Object-Oriented Analysis and Design, 3
-CMPE 137, Wireless Mobile Software Engineering, 3, TE
-CMPE 138, Database Systems I, 3, TE
-CMPE 139, Fundamentals of Data Mining, 3, TE
-CMPE 140, Computer Architecture and Design, 3
-CMPE 142, Operating Systems Design, 3
-CMPE 146, Real-Time Embedded System Co-Design, 3
-CMPE 147, Fundamentals of System on Chip (SoC) Design, 3, TE
-CMPE 148, Computer Networks I, 3
-CMPE 149, Computer Networks II, 3, TE
-CMPE 150, System Architecture and Electronic Design for Robotics, 3, TE
-CMPE 152, Compiler Design, 3
-CMPE 163, Introduction to Computer Graphics and Augmented Reality, 3, TE
-CMPE 165, Software Engineering Process Management, 3, TE
-CMPE 172, Enterprise Software Platforms, 3, TE
-CMPE 180, Individual Studies, 3
-CMPE 187, Software Quality Engineering, 3
-CMPE 188, Machine Learning for Big Data, 3
-CMPE 189, Special Topics in Computer Engineering, 3
-CMPE 195A, Senior Design Project I, 2
-CMPE 195B, Senior Design Project II, 3
-CMPE 195F, Senior Design Project II, 3
-CMPE 197, Cooperative Education Project, 3
-CMPE 198, Technology and Civilization, 3
-ENGR 60SL, Engineering Projects in Community Service, 1, TE
-ENGR 100W, Engineering Reports, 3
-ENGR 160SL, Engineering Projects in Community Service, 1, TE
-ENGR 195A, Global and Social Issues in Engineering, 1
-ENGR 195B, Global and Social Issues in Engineering, 1
-
-BIOL 10, The Living World, 3
-ENGL 1A, First Year Writing, 3
-ENGL 1B, Argument and Analysis, 3
-MATH 30, Calculus I, 3
-MATH 31, Calculus II, 4
-MATH 32, Calculus III, 3
-MATH 123, Differential Equations and Linear Algebra, 3
-PHYS 50, General Physics/Mechanics, 4
-PHYS 51, General Physics/Electricity and Magnetism, 4
-ISE 130, Engineering Probability and Statistics, 3
+CMPE 030,Programming Concepts and Methodology,3
+CMPE 050,Object-Oriented Concepts and Methodology,3
+CMPE 102,Assembly Language Programming,3
+CMPE 110,Electronics for Computing Systems,3
+CMPE 120,Computer Organization and Architecture, 3
+CMPE 124,Digital Design I,3
+CMPE 125,Digital Design II,3
+CMPE 126,Algorithms and Data Structure Design,3
+CMPE 127,Microprocessor Design I,3
+CMPE 130,Advanced Algorithm Design,3
+CMPE 131,Software Engineering I,3
+CMPE 132,Information Security, 3,TE
+CMPE 133,Software Engineering II,3
+CMPE 135,Object-Oriented Analysis and Design,3
+CMPE 137,Wireless Mobile Software Engineering,3,TE
+CMPE 138,Database Systems I,3,TE
+CMPE 139,Fundamentals of Data Mining,3,TE
+CMPE 140,Computer Architecture and Design,3
+CMPE 142,Operating Systems Design,3
+CMPE 146, Real-Time Embedded System Co-Design,3
+CMPE 147,Fundamentals of System on Chip (SoC) Design,3,TE
+CMPE 148,Computer Networks I,3
+CMPE 149,Computer Networks II,3,TE
+CMPE 150,System Architecture and Electronic Design for Robotics,3,TE
+CMPE 152,Compiler Design,3
+CMPE 163,Introduction to Computer Graphics and Augmented Reality,3,TE
+CMPE 165,Software Engineering Process Management,3,TE
+CMPE 172,Enterprise Software Platforms,3,TE
+CMPE 180,Individual Studies,3
+CMPE 187,Software Quality Engineering,3
+CMPE 188,Machine Learning for Big Data,3
+CMPE 189,Special Topics in Computer Engineering,3
+CMPE 195A,Senior Design Project I,2
+CMPE 195B,Senior Design Project II,3
+CMPE 195F,Senior Design Project II,3
+CMPE 197,Cooperative Education Project,3
+CMPE 198,Technology and Civilization,3
+ENGR 010,Introduction to Engineering,3
+ENGR 060SL,Engineering Projects in Community Service,1,TE
+ENGR 100W,Engineering Reports,3
+ENGR 160SL,Engineering Projects in Community Service,1,TE
+ENGR 195A,Global and Social Issues in Engineering,1
+ENGR 195B,Global and Social Issues in Engineering,1
+BIOL 010,The Living World,3
+ENGL 001A,First Year Writing,3
+ENGL 001B,Argument and Analysis,3
+MATH 030,Calculus I,3
+MATH 031,Calculus II,4
+MATH 032,Calculus III,3
+MATH 123,Differential Equations and Linear Algebra,3
+PHYS 050,General Physics/Mechanics,4
+PHYS 051,General Physics/Electricity and Magnetism,4
+ISE 130,Engineering Probability and Statistics,3
+EE 098,Introduction to Circuit Analysis,3
+EE 097,Introductory Electrical Engineering Laboratory,1
