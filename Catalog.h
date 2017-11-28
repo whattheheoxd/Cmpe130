@@ -13,6 +13,7 @@ struct CatalogCourse {
 	bool TE; //technical elective
 	Requisite requi;
 	Reqs req;
+	CatalogCourse();
 };
 
 struct Requisite{
