@@ -1,6 +1,13 @@
 #include "Catalog.h"
 //use adjacency list
-
+CatalogCourse::CatalogCourse()
+{
+	courseNum = " ";
+	course = " ";
+	units = 0;
+	priority = 0;
+	TE = false;
+}
 Catalog::Catalog(string c, string pr, string cr) {
 	// TODO Auto-generated constructor stub
 	MAX_SIZE = 100;
