@@ -92,8 +92,6 @@ void Catalog::addCourse(string cn, string c, int u, bool te){
 		course->course = c;
 		course->units = u;
 		course->TE = te;
-		course->nextpr = NULL;
-		course->nextcr = NULL;
 		courses[numCourses] = course;
 		numCourses += 1;
 
@@ -116,13 +114,6 @@ void Catalog::addCourse(string cn, string c, int u, bool te){
 
 //catalog sorted by courseNum - binary search
 int Catalog::look(string cn){
-    /*
-    for(int i = 0; i < numCourses; i++){
-        if(courses[i]->courseNum.compare(cn) == 0)
-            return i;
-    }
-    return -1;
-    */
 	int i = 0, lo = 0, hi = numCourses-1, m;
 
 	while(lo <= hi){
@@ -147,8 +138,10 @@ void Catalog::addPrereq(string c, string pr){ //adding edge
 		if(ci==-1) cout << c << " is not in the catalog.";
 		if(pri==-1) cout << pr << " is not in the catalog.";
 	}else{ //both courses in the catalog, add prereq relation (edge)
-		courses[pri]->nextpr = prereqs[ci].head;
-		prereqs[ci].head = courses[pri];
+	    Requisite *pre = new Requisite();
+	    pre->courseNum = pr;
+	    pre->next = prereqs[ci].head;
+	    prereqs[ci].head = pre;
 		cout << c << "'s prerequisite " << pr << " has been added.";
 	}
 }
@@ -161,19 +154,23 @@ void Catalog::addCoreq(string c, string cr){ //adding edge
 		cout << "Corequisite relation cannot be added: ";
 		if(ci==-1) cout << c << " is not in the catalog.";
 		if(cri==-1) cout << cr << " is not in the catalog.";
-	}else{ //both courses in the catalog, add prereq relation (edge)
-		courses[cri]->nextcr = prereqs[ci].head;
-		prereqs[ci].head = courses[cri];
+	}else{ //both courses in the catalog, add coreq relation (edge)
+        Requisite *co = new Requisite();
+	    co->courseNum = cr;
+	    co->next = coreqs[ci].head;
+	    coreqs[ci].head = co;
 		cout << c << "'s corequisite " << cr << " has been added.";
 	}
 }
 
-//binary search
-CatalogCourse* Catalog::getCourse(string cn){
-	int m = look(cn);
-	return (m!=-1) ? courses[m] : NULL;
+CatalogCourse* Catalog::getCourse(int cn){
+	return (cn>=0 && cn<numCourses) ? courses[cn] : NULL;
 }
 
-CatalogCourse* Catalog::getCourse(int cn){
-	return courses[cn];
+Requisite* Catalog::getPrereq(int cn){
+    return (cn>=0 && cn<numCourses) ? prereqs[cn].head : NULL;
+}
+
+Requisite* Catalog::getCoreq(int cn){
+    return (cn>=0 && cn<numCourses) ? coreqs[cn].head : NULL;
 }

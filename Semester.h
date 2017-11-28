@@ -15,10 +15,10 @@ public:
 	int getUnits();
 	bool delCourse(string);
 	int look(string);
+	void print();
 private:
 	string sem;
 	int units;
-	int numCourses;
 	int MAX_UNITS;
 	vector<CatalogCourse*> courses;
 };

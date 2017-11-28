@@ -23,10 +23,7 @@ void Semester::addCourse(string cn, string c, int u, bool te){
 		course->course = c;
 		course->units = u;
 		course->TE = te;
-		course->nextpr = NULL;
-		course->nextcr = NULL;
 		courses.push_back(course);
-		numCourses += 1;
 		cout << cn << " has been added.";
 	}else
 		cout << "Semester full.";
@@ -46,9 +43,18 @@ bool Semester::delCourse(string cn){
 }
 
 int Semester::look(string cn){
-	for(int i=0; i<numCourses; i++)
+	for(int i=0; i<courses.size(); i++)
 		if(courses.at(i)->courseNum.compare(cn)==0)
 			return i;
 
 	return -1;
+}
+
+void Semester::print(){
+    cout << "Course\t\tCourse Name\t\tUnits" << endl;
+    for(int i=0; i<courses.size(); i++){
+        cout << courses[i]->courseNum << "\t" << courses[i]->course << "\t" << courses[i]->units;
+        if(courses[i]->TE) cout << "\tTE";
+        cout << endl;
+    }
 }

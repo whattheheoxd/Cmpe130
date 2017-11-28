@@ -66,8 +66,6 @@ void Account::addCourse(string cn, string c, int u, bool te){
     cc->course = c;
     cc->units = u;
     cc->TE = te;
-    cc->nextcr = NULL;
-    cc->nextpr = NULL;
     completedCourses.push_back(cc);
 
     bool done = false;

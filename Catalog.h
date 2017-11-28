@@ -10,12 +10,15 @@ struct CatalogCourse {
 	string course;
 	int units;
 	bool TE; //technical elective
-	CatalogCourse* nextpr;
-	CatalogCourse* nextcr;
+};
+
+struct Requisite{
+    string courseNum;
+    Requisite* next;
 };
 
 struct Reqs{
-	CatalogCourse* head;
+	Requisite* head;
 };
 
 
@@ -30,10 +33,9 @@ public:
 	int look(string);
 	void addPrereq(string, string);
 	void addCoreq(string, string);
-	CatalogCourse* getCourse(string);
 	CatalogCourse* getCourse(int);
-	CatalogCourse* getPrereq(string);
-	CatalogCourse* getCoreq(string);
+	Requisite* getPrereq(int);
+	Requisite* getCoreq(int);
 private:
 	int MAX_SIZE;
 	int numCourses;
