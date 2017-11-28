@@ -1,0 +1,10 @@
+Freshman
+111111111
+Computer Engineering
+.
+ENGR 010,Introduction to Engineering,3
+MATH 030,Calculus I,3
+MATH 042,Discrete Mathematics,3
+CMPE 030,Programming Concepts and Methodology,3
+ENGL 001A,First Year Writing,3
+BIOL 010,The Living World,3
