@@ -10,6 +10,8 @@ struct CatalogCourse {
 	string course;
 	int units;
 	bool TE; //technical elective
+	Requisite requi;
+	Reqs req;
 };
 
 struct Requisite{
