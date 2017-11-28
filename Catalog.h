@@ -9,6 +9,7 @@ struct CatalogCourse {
 	string courseNum;
 	string course;
 	int units;
+	int priority;
 	bool TE; //technical elective
 	Requisite requi;
 	Reqs req;
