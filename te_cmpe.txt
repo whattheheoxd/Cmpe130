@@ -1,0 +1,18 @@
+CMPE 132,Information Security, 3,TE
+CMPE 133,Software Engineering II,3
+CMPE 137,Wireless Mobile Software Engineering,3,TE
+CMPE 138,Database Systems I,3,TE
+CMPE 139,Fundamentals of Data Mining,3,TE
+CMPE 147,Fundamentals of System on Chip (SoC) Design,3,TE
+CMPE 149,Computer Networks II,3,TE
+CMPE 150,System Architecture and Electronic Design for Robotics,3,TE
+CMPE 163,Introduction to Computer Graphics and Augmented Reality,3,TE
+CMPE 165,Software Engineering Process Management,3,TE
+CMPE 172,Enterprise Software Platforms,3,TE
+CMPE 187,Software Quality Engineering,3,TE
+CMPE 188,Machine Learning for Big Data,3,TE
+CMPE 189,Special Topics in Computer Engineering,3,TE
+CS 166, Information Security,3,TE
+EE 101, Circuit Concepts and Problem Solving,1,TE
+ENGR 060SL,Engineering Projects in Community Service,1,TE
+ENGR 160SL,Engineering Projects in Community Service,1,TE
