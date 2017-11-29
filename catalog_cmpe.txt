@@ -35,3 +35,19 @@ ENGR 195B,Global and Social Issues in Engineering,1
 TE 001,Technical Elective 1,3
 TE 002,Technical Elective 2,3
 TE 003,Technical Elective 3,1
+.
+CMPE 132,Information Security, 3
+CMPE 137,Wireless Mobile Software Engineering,3
+CMPE 138,Database Systems I,3
+CMPE 139,Fundamentals of Data Mining,3
+CMPE 147,Fundamentals of System on Chip (SoC) Design,3
+CMPE 149,Computer Networks II,3
+CMPE 150,System Architecture and Electronic Design for Robotics,3
+CMPE 163,Introduction to Computer Graphics and Augmented Reality,3
+CMPE 172,Enterprise Software Platforms,3
+CMPE 187,Software Quality Engineering,3
+CMPE 188,Machine Learning for Big Data,3
+CS 166,Information Security,3
+EE 101,Circuit Concepts and Problem Solving,1
+ENGR 060SL,Engineering Projects in Community Service,1
+ENGR 160SL,Engineering Projects in Community Service,1
