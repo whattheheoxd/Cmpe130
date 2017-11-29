@@ -32,6 +32,6 @@ CMPE 195A,Senior Design Project I,2
 CMPE 195B,Senior Design Project II,3
 ENGR 195A,Global and Social Issues in Engineering,1
 ENGR 195B,Global and Social Issues in Engineering,1
-TE,Technical Elective 1,3
-TE,Technical Elective 2,3
-TE,Technical Elective 3,1
+TE 001,Technical Elective 1,3
+TE 002,Technical Elective 2,3
+TE 003,Technical Elective 3,1
