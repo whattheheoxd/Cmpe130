@@ -28,9 +28,14 @@ public:
 	~Schedule();
 	void create(string); //get txt file
 	void addCourse(string, string, int, int, int);
-	ScheduleCourse* getCourse(int);
+	bool available(string); //for determining if the course is available when adding to the Semester
+	//getCourses uses binary search to return a vector of ScheduleCourses
+	//this fn is used for AFTER the Semester obj has been created
+	//we will NOT consider schedule conflicts when creating the semester
 	vector<ScheduleCourse*> getCourses(string);
-	vector<int> look(string); //return array of course ids
+	int getLeft(int, int, string);
+	int getRight(int, int, string);
+
 private:
 	string semester;
 	ScheduleCourse** courses;

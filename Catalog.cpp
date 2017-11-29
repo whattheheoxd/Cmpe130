@@ -1,13 +1,6 @@
 #include "Catalog.h"
 //use adjacency list
-CatalogCourse::CatalogCourse()
-{
-	courseNum = " ";
-	course = " ";
-	units = 0;
-	priority = 0;
-	TE = false;
-}
+
 Catalog::Catalog(string c, string pr, string cr) {
 	// TODO Auto-generated constructor stub
 	MAX_SIZE = 100;
@@ -180,4 +173,8 @@ Requisite* Catalog::getPrereq(int cn){
 
 Requisite* Catalog::getCoreq(int cn){
     return (cn>=0 && cn<numCourses) ? coreqs[cn].head : NULL;
+}
+
+int Catalog::getNumCourses(){
+    return numCourses;
 }

@@ -17,6 +17,7 @@ class Account
         void print();
         void addCourse(string, string, int, bool); //add to completedCourses
         bool completed(string); //returns true if course is completed
+        int getNumCourses();
 
     private:
         fstream acc;	//text file for schedule

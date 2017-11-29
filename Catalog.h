@@ -9,11 +9,7 @@ struct CatalogCourse {
 	string courseNum;
 	string course;
 	int units;
-	int priority;
 	bool TE; //technical elective
-	Requisite requi;
-	Reqs req;
-	CatalogCourse();
 };
 
 struct Requisite{
@@ -37,6 +33,7 @@ public:
 	int look(string);
 	void addPrereq(string, string);
 	void addCoreq(string, string);
+	int getNumCourses();
 	CatalogCourse* getCourse(int);
 	Requisite* getPrereq(int);
 	Requisite* getCoreq(int);

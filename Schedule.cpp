@@ -66,7 +66,7 @@ void Schedule::addCourse(string cn, string c, int s, int id, int u){
 		bool done = false;
 		int i = numCourses-1;
 		while(i>0 && !done){
-			if(courses[i]->courseID < courses[i-1]->courseID){
+			if(courses[i]->courseNum.compare(courses[i-1]->courseNum) < 0 ){
 				ScheduleCourse* temp = courses[i];
 				courses[i] = courses[i-1];
 				courses[i-1] = temp;
@@ -80,36 +80,61 @@ void Schedule::addCourse(string cn, string c, int s, int id, int u){
 		cout << "Catalog full.";
 }
 
-//binary search
-ScheduleCourse* Schedule::getCourse(int id){
+//binary search - check if course cn is in the schedule
+bool Schedule::available(string cn){
 	int i = 0, lo = 0, hi = numCourses-1, m;
 
-	while(lo <= hi){
+while(lo <= hi){
 		m = (lo+hi)/2;
-		if(courses[m]->courseID < id)
+		if(courses[m]->courseNum.compare(cn) > 0)
 			hi = m - 1;
-		else if(courses[m]->courseID > id)
+		else if(courses[m]->courseNum.compare(cn) < 0)
 			lo = m + 1;
-		else return courses[m];
+		else return true;
 	}
-	return NULL;
+	//if(lo > hi)
+        return false;
 }
 
-//linear search - unsorted by courseNum
+int Schedule::getRight(int l, int r, string cn){
+    int m;
+
+    while(r-l>1){
+        m=l+(r-l)/2;
+        if(courses[m]->courseNum.compare(cn) > 0)
+            r = m;
+        else
+            l = m;
+    }
+
+    return l;
+}
+
+int Schedule::getLeft(int l, int r, string cn){
+    int m;
+
+    while(r-l>1){
+        m =l+(r-l)/2;
+        if(courses[m]->courseNum.compare(cn) < 0)
+            l = m;
+        else
+            r = m;
+    }
+
+    return r;
+}
+
 vector<ScheduleCourse*> Schedule::getCourses(string cn){
 	vector<ScheduleCourse*> c;
-	for(int i=0; i < numCourses; i++)
-		if(courses[i]->courseNum.compare(cn)==0)
+
+    int l = getLeft(-1, numCourses-1, cn);
+    int r = getRight(0, numCourses, cn);
+
+    // What if the element doesn't exists in the array?
+    // The checks helps to trace that element exists
+
+    for(int i=l; i <= r; i++) //right - left + 1
+		//if(courses[i]->courseNum.compare(cn)==0)
 			c.push_back(courses[i]);
-
-	return c;
-}
-
-//linear search
-vector<int> Schedule::look(string cn){
-	vector<int> c;
-	for(int i=0; i < numCourses; i++)
-		if(courses[i]->courseNum.compare(cn)==0)
-			c.push_back(courses[i]->courseID);
-	return c;
+    return c;
 }

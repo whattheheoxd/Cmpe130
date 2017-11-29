@@ -93,3 +93,7 @@ bool Account::completed(string s){ //returns true if course is completed
 	}
 	return false;
 }
+
+int Account::getNumCourses(){
+    return completedCourses.size();
+}
