@@ -5,13 +5,6 @@
 #include <sstream>
 using namespace std;
 //#include "CatalogCourse.cpp";
-struct CatalogCourse {
-	string courseNum;
-	string course;
-	int units;
-	bool TE; //technical elective
-};
-
 struct Requisite{
     string courseNum;
     Requisite* next;
@@ -20,6 +13,26 @@ struct Requisite{
 struct Reqs{
 	Requisite* head;
 };
+struct CatalogCourse {
+	string courseNum;
+	string course;
+	int priority;
+	int units;
+	bool TE; //technical elective
+    Requisite *requi;
+  	Reqs *req;
+	CatalogCourse(){
+        courseNum = "";
+        course = "";
+        units = 0;
+        priority = 0;
+        TE = false;
+        requi = NULL;
+        req = NULL;
+    }
+};
+
+
 
 
 //use adjacency list
