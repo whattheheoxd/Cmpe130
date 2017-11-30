@@ -22,8 +22,8 @@ void Semester::addCourse(string cn, string c, int u, bool te){
 		course->courseNum = cn;
 		course->course = c;
 		course->units = u;
-		course->TE = te;
 		courses.push_back(course);
+		units+=u;
 		cout << cn << " has been added.";
 	}else
 		cout << "Semester full.";
@@ -54,7 +54,6 @@ void Semester::print(){
     cout << "Course\t\tCourse Name\t\tUnits" << endl;
     for(int i=0; i<courses.size(); i++){
         cout << courses[i]->courseNum << "\t" << courses[i]->course << "\t" << courses[i]->units;
-        if(courses[i]->TE) cout << "\tTE";
         cout << endl;
     }
 }
