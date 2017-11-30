@@ -9,7 +9,6 @@ MATH 042,Discrete Mathematics,3
 PHYS 050,General Physics/Mechanics,4
 PHYS 051,General Physics/Electricity and Magnetism,4
 MATH 123,Differential Equations and Linear Algebra,3
-MATH 142, Introduction to Combinatorics
 ISE 130,Engineering Probability and Statistics,3
 CS 046A,Introduction to Programming,4
 CS 046B,Introduction to Data Structures,4
