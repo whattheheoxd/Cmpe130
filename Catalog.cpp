@@ -88,11 +88,11 @@ void Catalog::create(string c, string pr, string cr){
                 getline(stream, courseNum, ',');
                 getline(stream, course, ',');
 
-            if(!te)
-                addPrereq(courseNum, course);
-            else
-                addTEPrereq(courseNum, course);
-            cout << endl;
+            	if(!te)
+                    addPrereq(courseNum, course);
+            	else
+                    addTEPrereq(courseNum, course);
+            	cout << endl;
             }
         }
         file.close();
@@ -109,12 +109,13 @@ void Catalog::create(string c, string pr, string cr){
                 getline(stream, courseNum, ',');
                 getline(stream, course, ',');
 
-            if(!te)
-                addCoreq(courseNum, course);
-            else
-                addTECoreq(courseNum, course);
+		if(!te)
+		    addCoreq(courseNum, course);
+	        else
+		    addTECoreq(courseNum, course);
+		cout << endl;
             }
-            cout << endl;
+            
         }
         file.close();
     }
