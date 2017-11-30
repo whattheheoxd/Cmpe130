@@ -1,0 +1,9 @@
+Freshman
+323958938
+Software Engineering
+.
+CS 046A,Introduction to Programming,4
+ENGR 010,
+MATH 030,Calculus I,3
+ENGL 001A,First Year Writing,3
+MATH 042,Discrete Math,3

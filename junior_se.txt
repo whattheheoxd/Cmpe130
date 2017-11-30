@@ -1,0 +1,24 @@
+Junior
+983547752
+Software Engineering
+.
+CS 046A,Introduction to Programming,4
+ENGR 010,Introduction to Engineering,3
+MATH 030,Calculus I,3
+ENGL 001A,First Year Writing,3
+MATH 042,Discrete Math,3
+PHYS 050,General Physics/Mechanics,4
+ENGL 001B,Argument and Analysis,3
+CS 046B,Introduction to Data Structures,4
+ENGL 001B,Argument and Analysis,3
+MATH 031,Calculus II,4
+BIOL 010,The Living World,3
+CMPE 131,Software Engineering I,3
+PHYS 051,General Physics/Electricity and Magnetism,4
+MATH 032,Calculus III,3
+CS 146,Data Structures and Algorithms,3
+CMPE 120,Computer Organization and Architecture,3
+CMPE 133,Software Engineering II,3
+CS 151,Object-Oriented Design,3
+CS 157A,Introduction to Database Management Systems,3
+ISE 130,Engineering Probability and Statistics,3
