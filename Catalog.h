@@ -18,7 +18,6 @@ struct CatalogCourse {
 	string course;
 	int priority;
 	int units;
-	bool TE; //technical elective
     Requisite *requi;
   	Reqs *req;
 	CatalogCourse(){
@@ -26,7 +25,6 @@ struct CatalogCourse {
         course = "";
         units = 0;
         priority = 0;
-        TE = false;
         requi = NULL;
         req = NULL;
     }
@@ -42,20 +40,32 @@ public:
 	Catalog(string, string, string, int);
 	virtual ~Catalog();
 	void create(string, string, string);
-	void addCourse(string, string, int, bool);
+	void addCourse(string, string, int);
+	void addTE(string, string, int);
 	int look(string);
+	int lookTE(string);
 	void addPrereq(string, string);
 	void addCoreq(string, string);
+    void addTEPrereq(string, string);
+	void addTECoreq(string, string);
 	int getNumCourses();
+	int getNumTEs();
 	CatalogCourse* getCourse(int);
 	Requisite* getPrereq(int);
 	Requisite* getCoreq(int);
+    CatalogCourse* getTE(int);
+	Requisite* getTEPrereq(int);
+	Requisite* getTECoreq(int);
 private:
 	int MAX_SIZE;
 	int numCourses;
+	int numTEs;
 	CatalogCourse** courses;
+	CatalogCourse** TEs;
 	Reqs* prereqs;
 	Reqs* coreqs;
+	Reqs* TEprereqs;
+	Reqs* TEcoreqs;
 };
 
 #endif /* CATALOG_H_ */
