@@ -16,7 +16,7 @@ Semester::Semester(string s, int u){
 Semester::~Semester(){
 }
 
-void Semester::addCourse(string cn, string c, int u, bool te){
+void Semester::addCourse(string cn, string c, int u){
 	if(units+u < MAX_UNITS){
 		CatalogCourse* course = new CatalogCourse;
 		course->courseNum = cn;

@@ -11,7 +11,7 @@ public:
 	Semester(string);
 	Semester(string, int);
 	~Semester();
-	void addCourse(string, string, int, bool);
+	void addCourse(string, string, int);
 	int getUnits();
 	bool delCourse(string);
 	int look(string);

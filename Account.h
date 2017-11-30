@@ -15,7 +15,7 @@ class Account
         Account(string); //initialize account info, read from file
         ~Account();
         void print();
-        void addCourse(string, string, int, bool); //add to completedCourses
+        void addCourse(string, string, int); //add to completedCourses
         bool completed(string); //returns true if course is completed
         int getNumCourses();
 

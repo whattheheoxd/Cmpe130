@@ -26,7 +26,7 @@ Account::Account(string path){
             u >> x;
             te = getline(stream, t, ',');
 
-            addCourse(courseNum, course, x, te);
+            addCourse(courseNum, course, x);
         }
     }
 }
@@ -49,7 +49,7 @@ void Account::print()
     }
 }
 
-void Account::addCourse(string cn, string c, int u, bool te){
+void Account::addCourse(string cn, string c, int u){
     CatalogCourse *cc = new CatalogCourse();
     cc->courseNum = cn;
     cc->course = c;
