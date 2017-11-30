@@ -36,8 +36,8 @@ struct CatalogCourse {
 //use adjacency list
 class Catalog {
 public:
-	Catalog(string, string, string);
-	Catalog(string, string, string, int);
+	Catalog(string, string, string, string);
+	Catalog(string, string, string, string, int);
 	virtual ~Catalog();
 	void create(string, string, string);
 	void addCourse(string, string, int);
@@ -56,6 +56,7 @@ public:
     CatalogCourse* getTE(int);
 	Requisite* getTEPrereq(int);
 	Requisite* getTECoreq(int);
+	string getTitle();
 private:
 	int MAX_SIZE;
 	int numCourses;
@@ -66,7 +67,7 @@ private:
 	Reqs* coreqs;
 	Reqs* TEprereqs;
 	Reqs* TEcoreqs;
+	string title;
 };
 
 #endif /* CATALOG_H_ */
-

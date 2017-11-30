@@ -1,7 +1,8 @@
 #include "Catalog.h"
 //use adjacency list
 
-Catalog::Catalog(string c, string pr, string cr){
+Catalog::Catalog(string c, string pr, string cr, string t){
+    title = t;
 	MAX_SIZE = 50;
 	numCourses = 0;
 	numTEs = 0;
@@ -22,7 +23,7 @@ Catalog::Catalog(string c, string pr, string cr){
     create(c, pr, cr);
 }
 
-Catalog::Catalog(string c, string pr, string cr, int s) {
+Catalog::Catalog(string c, string pr, string cr, string t, int s) {
 	MAX_SIZE = s;
 	numCourses = 0;
 	numTEs = 0;
@@ -88,11 +89,11 @@ void Catalog::create(string c, string pr, string cr){
                 getline(stream, courseNum, ',');
                 getline(stream, course, ',');
 
-            	if(!te)
+                if(!te)
                     addPrereq(courseNum, course);
-            	else
+                else
                     addTEPrereq(courseNum, course);
-            	cout << endl;
+                cout << endl;
             }
         }
         file.close();
@@ -109,13 +110,13 @@ void Catalog::create(string c, string pr, string cr){
                 getline(stream, courseNum, ',');
                 getline(stream, course, ',');
 
-		if(!te)
-		    addCoreq(courseNum, course);
-	        else
-		    addTECoreq(courseNum, course);
-		cout << endl;
+                if(!te)
+                    addCoreq(courseNum, course);
+                else
+                    addTECoreq(courseNum, course);
+                cout << endl;
             }
-            
+
         }
         file.close();
     }
@@ -310,4 +311,8 @@ int Catalog::getNumCourses(){
 
 int Catalog::getNumTEs(){
     return numTEs;
+}
+
+string Catalog::getTitle(){
+    return title;
 }
