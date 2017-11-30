@@ -16,15 +16,6 @@ Account::Account(string path){
 
         getline(file, major);
 
-        p = ""; //minor
-        getline(file, p); //could be "." or minor
-        if(p.compare(".")!=0){ //minor exists
-            minor = p;
-            getline(file, p);
-        }else{
-            minor = "no minor";
-        }
-
         //begin CatalogCourse obj initialization
         while(getline(file, s)){
             stringstream stream(s);
@@ -51,11 +42,9 @@ void Account::print()
     cout << name << endl;
     cout << studId << endl;
     cout << major << endl;
-    cout << minor << endl;
     for(int i=0; i<completedCourses.size(); i++){
         cc = completedCourses[i];
         cout << cc->courseNum << " " << cc->course << " " << cc->units;
-        if(cc->TE) cout << " TE";
         cout << endl;
     }
 }
@@ -65,7 +54,6 @@ void Account::addCourse(string cn, string c, int u, bool te){
     cc->courseNum = cn;
     cc->course = c;
     cc->units = u;
-    cc->TE = te;
     completedCourses.push_back(cc);
 
     bool done = false;

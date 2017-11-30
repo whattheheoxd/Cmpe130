@@ -24,7 +24,6 @@ class Account
         string name;
         int studId;
         string major;
-        string minor;
         vector<CatalogCourse*> completedCourses; //course history
         //vector<CatalogCourse> incompleteCourses;
 };
