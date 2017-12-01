@@ -24,19 +24,20 @@ void Semester::addCourse(string cn, string c, int u){
 		course->units = u;
 		courses.push_back(course);
 		units+=u;
-		cout << cn << " has been added.";
+		//cout << cn << " has been added.";
 	}else
-		cout << "Semester full.";
+		cout << "Semester full." << endl;
 }
 
 int Semester::getUnits(){
 	return units;
 }
 
-bool Semester::delCourse(string cn){
+bool Semester::delCourse(string cn, int u){
 	int i = look(cn);
 	if(i!=-1){
 		courses.erase(courses.begin()+i);
+		units -=u;
 		return true;
 	}else
 		return false;
@@ -53,7 +54,20 @@ int Semester::look(string cn){
 void Semester::print(){
     cout << "Course\t\tCourse Name\t\tUnits" << endl;
     for(int i=0; i<courses.size(); i++){
-        cout << courses[i]->courseNum << "\t" << courses[i]->course << "\t" << courses[i]->units;
+        cout << setw(12) << left << courses[i]->courseNum << setw(40) << left << courses[i]->course << setw(2) << courses[i]->units;
         cout << endl;
     }
+}
+
+void Semester::clearSem(){
+    courses.clear();
+    units = 0;
+}
+
+int Semester::getSize(){
+    return courses.size();
+}
+
+CatalogCourse* Semester::getCourse(int i){
+    return courses[i];
 }

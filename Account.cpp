@@ -85,3 +85,7 @@ bool Account::completed(string s){ //returns true if course is completed
 int Account::getNumCourses(){
     return completedCourses.size();
 }
+
+CatalogCourse* Account::getCourse(int i){
+    return completedCourses[i];
+}
