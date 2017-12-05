@@ -1,0 +1,6 @@
+In main.cpp, in the int main() function, both the CMPE and SE catalogs are first listed. 
+Immediately after the sample accounts of students are listed below.
+To start running the code on a sample, call getStartingPts((some account, ex: "empty_cmpe.txt"), (one of the catalogs, if using cmpe use "cmpe_cat"), 
+unitsCap, (startPtrsCMPE, if using a cmpe account). Example : getStartingPts(accEmpCMPE, cmpe_cat, unitsCap, startPtrsCMPE); //line 197
+After calling that function, call modFWalgo on the same parameters.
+Compile C++
