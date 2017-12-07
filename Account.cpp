@@ -15,7 +15,7 @@ Account::Account(string path){
         id >> studId;
 
         getline(file, major);
-
+        getline(file, s);
         //begin CatalogCourse obj initialization
         while(getline(file, s)){
             stringstream stream(s);
@@ -88,4 +88,8 @@ int Account::getNumCourses(){
 
 CatalogCourse* Account::getCourse(int i){
     return completedCourses[i];
+}
+
+string Account::getMajor(){
+    return major;
 }
